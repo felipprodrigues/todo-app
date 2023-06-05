@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper form {
+  gap: .5rem;
+  display: flex;
+  max-width: 60%;
+  width: 100%;
+}
+
+.wrapper form input {
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  width: 80%;
+  background-color: var(--gray-500);
+  color: var(--gray-300);
+}
+
+.wrapper form input:focus {
+  outline: none !important;
+  border: 1px solid var(--purple);
+}
+
+.wrapper form button {
+  border: none;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  transition: all .15s linear;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.wrapper form button:hover {
+  background-color: var(--blue);
+}
+
+.wrapper form button svg {
+  margin-right: .25rem;
+}
