@@ -11,16 +11,16 @@ export function List({tasks}) {
         return (
           <div className={styles.wrapper}>
 
-            <input
-              id={item.content}
-              name={item.content}
-              type="radio"
-              className={styles.input}
-            />
             <label
               className={styles.label}
-              id={item.content}
+              htmlFor={item.content}
             >
+              <input
+                id={item.content}
+                name={item.content}
+                type="radio"
+                className={styles.input}
+              />
               {item.content}
             </label>
 

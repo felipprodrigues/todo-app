@@ -9,6 +9,8 @@ interface ContentProps {
 
 export function Content({tasks}: ContentProps) {
 
+
+
   return (
     <div className={styles.wrapper}>
 
@@ -16,7 +18,7 @@ export function Content({tasks}: ContentProps) {
         <div className={styles.header}>
           <span className={styles.isBlue}>Tarefas criadas</span>
           <div className={styles.headerNumbers}>
-            <span>0</span>
+            <span>{tasks.length}</span>
           </div>
         </div>
 
