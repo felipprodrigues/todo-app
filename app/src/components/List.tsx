@@ -1,9 +1,7 @@
 import styles from '../styles/Lists.module.css'
 import { Trash } from 'phosphor-react'
 
-export function List({tasks}) {
-  console.log(tasks.length)
-
+export function List({tasks, handleRadioState, radio, handleDelete}) {
 
   return (
     <>
@@ -20,6 +18,9 @@ export function List({tasks}) {
                 name={item.content}
                 type="radio"
                 className={styles.input}
+                value={item.content}
+                checked={radio === item.content}
+                onChange={(event) => handleRadioState(event)}
               />
               {item.content}
             </label>
@@ -27,6 +28,7 @@ export function List({tasks}) {
             <Trash
               size={20}
               className={styles.icon}
+              onClick={handleDelete}
             />
 
           </div>
