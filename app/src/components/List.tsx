@@ -10,8 +10,9 @@ export function List({tasks, handleRadioState, radio, handleDelete}) {
           <div className={styles.wrapper}>
 
             <label
-              className={styles.label}
+              className={`${styles.label} ${radio === true ? styles.isStrikeThrough : ''}`}
               htmlFor={item.content}
+
             >
               <input
                 id={item.content}

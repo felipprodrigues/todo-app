@@ -32,8 +32,6 @@ function App() {
   }
 
   function handleDelete() {
-
-
     tasks.filter((el) => console.log(el !== el.id))
 
     // setTasks((prevTasks: TasksType[]) => [...prevTasks, tasks])

@@ -24,6 +24,11 @@
   margin-right: 1.25rem;
 }
 
+.isStrikeThrough {
+  text-decoration: line-through;
+}
+
+
 .icon {
   filter: brightness(50%);
   transition: all .5s linear;
