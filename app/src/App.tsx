@@ -27,16 +27,17 @@ function App() {
     const checked = event.target.checked;
     setRadio(prev => prev === checked ? null : checked);
 
-    if(checked) {
-    }
+
   }
 
-  function handleDelete() {
-    tasks.filter((el) => console.log(el !== el.id))
+  function handleDelete(el: any) {
+    const draft = tasks.filter((item: any) => item.id !== el.id)
+
+    setTasks([...draft])
+  }
+
 
     // setTasks((prevTasks: TasksType[]) => [...prevTasks, tasks])
-  }
-
   useEffect(() => {
     console.log(tasks, 'saporra')
   }, [tasks])

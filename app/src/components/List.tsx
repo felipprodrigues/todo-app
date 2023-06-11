@@ -29,7 +29,7 @@ export function List({tasks, handleRadioState, radio, handleDelete}) {
             <Trash
               size={20}
               className={styles.icon}
-              onClick={handleDelete}
+              onClick={() => handleDelete(item)}
             />
 
           </div>
