@@ -2,14 +2,16 @@ import styles from '../styles/Content.module.css';
 import { EmptyList } from './EmptyList';
 import { List } from './List';
 
-interface ContentProps {
+export interface ContentProps {
   tasks: Array[];
   handleRadioState: (event: React.ChangeEvent<HTMLInputElement>) => void;
   radio: boolean;
   handleDelete: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleInvalidTask: (event: React.InvalidEvent<HTMLInputElement>) => void;
+  inputValue: string;
 }
 
-export function Content({tasks, handleRadioState, radio, handleDelete}: ContentProps) {
+export function Content({tasks, handleRadioState, radio, handleDelete, handleInvalidTask, inputValue}: ContentProps) {
   return (
     <div className={styles.wrapper}>
 
@@ -40,6 +42,8 @@ export function Content({tasks, handleRadioState, radio, handleDelete}: ContentP
             handleRadioState={handleRadioState}
             radio={radio}
             handleDelete={handleDelete}
+            handleInvalidTask={handleInvalidTask}
+            inputValue={inputValue}
           />
         </div>
       )}

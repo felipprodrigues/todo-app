@@ -4,9 +4,8 @@ import styles from './styles/App.module.css'
 import {Header} from './components/Header'
 import {Form} from './components/Form'
 import {Content} from './components/Content'
-import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
+import { useState, ChangeEvent, FormEvent, useEffect, InvalidEvent } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-
 
 interface TasksType {
   id: string,
@@ -25,19 +24,36 @@ function App() {
 
   function handleRadioState(event: any) {
     const checked = event.target.checked;
-    setRadio(prev => prev === checked ? null : checked);
+    const uniqueId = event.currentTarget.id;
+    const updateTask = tasks.map((item: any) => {
+      if(item.id === uniqueId) {
+        console.log(uniqueId, 'aqui')
+      }
+      return console.log(item, '123')
+    })
+
+    updateTask
+    // const updatedTasks = tasks.map((item: any) => {
+    //   console.log(item, '123')
+    // }
+
+    // setTasks(prev => prev === uniqueId ? null : checked);
+
+    // const checked = event.target.checked;
 
 
+    // const uniqueId = event.currentTarget.id
+
+    // console.log(uniqueId, 'aqui o checked')
+
+    // setRadio(prev => prev === uniqueId ? null : checked);
   }
 
   function handleDelete(el: any) {
     const draft = tasks.filter((item: any) => item.id !== el.id)
-
     setTasks([...draft])
   }
 
-
-    // setTasks((prevTasks: TasksType[]) => [...prevTasks, tasks])
   useEffect(() => {
     console.log(tasks, 'saporra')
   }, [tasks])
@@ -57,6 +73,13 @@ function App() {
     setInputValue('')
   }
 
+
+  function handleInvalidTask(event: InvalidEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('Esse campo é obrigatório')
+  }
+
+  const isInvalid = inputValue.length === 0
+
   return (
     <div>
       <Header />
@@ -66,6 +89,7 @@ function App() {
           <Form
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            isInvalid={isInvalid}
           />
 
           <Content
@@ -73,6 +97,8 @@ function App() {
             handleRadioState={handleRadioState}
             radio={radio}
             handleDelete={handleDelete}
+            handleInvalidTask={handleInvalidTask}
+            inputValue={inputValue}
           />
         </main>
       </div>

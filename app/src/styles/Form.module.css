@@ -44,3 +44,8 @@
 .wrapper form button svg {
   margin-right: .25rem;
 }
+
+.wrapper form button[disabled] {
+  cursor: not-allowed;
+  opacity: .5
+}
