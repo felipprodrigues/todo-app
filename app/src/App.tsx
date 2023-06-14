@@ -13,40 +13,38 @@ interface TasksType {
   content: string;
 }
 
+interface RadioState {
+  radio: boolean
+}
+
 function App() {
   const [inputValue, setInputValue] = useState('');
-  const [tasks, setTasks] = useState<TasksType[]>([]);
-  const [radio, setRadio] = useState(null)
+  const [tasks, setTasks] = useState<TasksType[]>([
+    {
+      id: '',
+      radioInput: false,
+      content: '',
+    }
+  ]);
+  const [radio, setRadio] = useState<RadioState[]>([])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.target.setCustomValidity('')
     setInputValue(event.target.value);
   };
 
-  function handleRadioState(event: any) {
-    const checked = event.target.checked;
-    const uniqueId = event.currentTarget.id;
-    const updateTask = tasks.map((item: any) => {
-      if(item.id === uniqueId) {
-        console.log(uniqueId, 'aqui')
+  function handleRadioState(id: string) {
+    setRadio((prevRadio: any) => {
+      if (prevRadio.includes(id)) {
+        // Remove the ID from the radio state if already present
+        console.log(prevRadio, 'if condition')
+        return prevRadio.filter((radioId: any) => radioId !== id);
+      } else {
+        // Add the ID to the radio state if not already present
+        console.log(prevRadio, 'else condition')
+        return [...prevRadio, id];
       }
-      return console.log(item, '123')
-    })
-
-    updateTask
-    // const updatedTasks = tasks.map((item: any) => {
-    //   console.log(item, '123')
-    // }
-
-    // setTasks(prev => prev === uniqueId ? null : checked);
-
-    // const checked = event.target.checked;
-
-
-    // const uniqueId = event.currentTarget.id
-
-    // console.log(uniqueId, 'aqui o checked')
-
-    // setRadio(prev => prev === uniqueId ? null : checked);
+    });
   }
 
   function handleDelete(el: any) {

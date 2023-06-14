@@ -2,7 +2,14 @@ import styles from '../styles/Lists.module.css'
 import { Trash } from 'phosphor-react'
 import {ContentProps} from './Content'
 
-export function List({tasks, handleRadioState, radio, handleDelete, handleInvalidTask, inputValue}: ContentProps) {
+export function List({
+  tasks,
+  handleRadioState,
+  radio,
+  handleDelete,
+  handleInvalidTask,
+  inputValue
+  }: ContentProps) {
 
   return (
     <>
@@ -14,9 +21,8 @@ export function List({tasks, handleRadioState, radio, handleDelete, handleInvali
           >
 
             <label
-              className={`${styles.label} ${radio === true ? styles.isStrikeThrough : ''}`}
+              className={`${styles.label} ${radio.includes(item.id) ? styles.isStrikeThrough : ''}`}
               htmlFor={item.content}
-
             >
               <input
                 id={item.content}
@@ -24,8 +30,8 @@ export function List({tasks, handleRadioState, radio, handleDelete, handleInvali
                 type="radio"
                 className={styles.input}
                 value={inputValue}
-                checked={radio === item.content}
-                onChange={(event) => handleRadioState(event)}
+                checked={radio === item.id}
+                onChange={() => handleRadioState(item.id)}
                 onInvalid={handleInvalidTask}
               />
               {item.content}
