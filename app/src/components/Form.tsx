@@ -1,6 +1,6 @@
 import { PlusCircle } from "phosphor-react"
 import styles from '../styles/Form.module.css'
-import { ButtonHTMLAttributes, ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent } from "react";
 
 interface InputProps {
   handleInputValue: (event: ChangeEvent<HTMLInputElement>) => void;

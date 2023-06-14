@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import styles from '../styles/Content.module.css';
 import { EmptyList } from './EmptyList';
 import { List } from './List';
 
 export interface ContentProps {
-  tasks: Array[];
+  tasks: any;
   completedTask: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleDelete: (event: React.ChangeEvent<HTMLInputElement>) => void;
   completedTasksAmount: number

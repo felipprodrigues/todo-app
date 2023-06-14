@@ -3,7 +3,7 @@ import styles from './styles/App.module.css'
 
 import {Header} from './components/Header'
 import {Form} from './components/Form'
-import { useState, ChangeEvent, FormEvent, useEffect} from 'react'
+import { useState, ChangeEvent, FormEvent} from 'react'
 import {Content} from './components/Content'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -16,7 +16,7 @@ interface TasksType {
 function App() {
   const [inputValue, setInputValue] = useState('');
   const [tasks, setTasks] = useState<TasksType[]>([]);
-  const [completedTasksAmount, setCompletedTasksAmount] = useState(0)
+  const [completedTasksAmount, setCompletedTasksAmount] = useState<number>(0)
 
   const isInvalid = inputValue.length === 0
 
@@ -25,7 +25,7 @@ function App() {
     setInputValue(event.target.value);
   };
 
-  function completedTask(id: string) {
+  function completedTask(id: any) {
     setTasks((prev) => {
       const draft = prev.map(task =>
         task.id === id ? { ...task, isComplete: !task.isComplete } : task);

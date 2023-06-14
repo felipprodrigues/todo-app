@@ -1,13 +1,17 @@
 import styles from '../styles/Lists.module.css'
 import { Trash } from 'phosphor-react'
-import {ContentProps} from './Content'
+
+interface ContentProps {
+  tasks: any;
+  completedTask: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleDelete: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
 export function List({
   tasks,
   handleDelete,
   completedTask,
-  })
-{
+  }: ContentProps){
 
   return (
     <>
