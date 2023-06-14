@@ -1,17 +1,21 @@
+import { useState } from 'react';
 import styles from '../styles/Content.module.css';
 import { EmptyList } from './EmptyList';
 import { List } from './List';
 
 export interface ContentProps {
   tasks: Array[];
-  handleRadioState: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  radio: boolean;
+  completedTask: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleDelete: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleInvalidTask: (event: React.InvalidEvent<HTMLInputElement>) => void;
-  inputValue: string;
+  completedTasksAmount: number
 }
-
-export function Content({tasks, handleRadioState, radio, handleDelete, handleInvalidTask, inputValue}: ContentProps) {
+// {tasks, completedTask, radio, handleDelete, inputValue, isChecked}: ContentProps
+export function Content({
+  tasks,
+  handleDelete,
+  completedTask,
+  completedTasksAmount
+}: ContentProps) {
   return (
     <div className={styles.wrapper}>
 
@@ -26,7 +30,7 @@ export function Content({tasks, handleRadioState, radio, handleDelete, handleInv
         <div className={styles.header}>
           <span className={styles.isPurple}>Concluidas</span>
           <div className={styles.headerNumbers}>
-            <span>0</span>
+            <span>{completedTasksAmount}</span>
           </div>
         </div>
       </div>
@@ -39,11 +43,8 @@ export function Content({tasks, handleRadioState, radio, handleDelete, handleInv
         <div className={styles.holderContent}>
           <List
             tasks={tasks}
-            handleRadioState={handleRadioState}
-            radio={radio}
             handleDelete={handleDelete}
-            handleInvalidTask={handleInvalidTask}
-            inputValue={inputValue}
+            completedTask={completedTask}
           />
         </div>
       )}

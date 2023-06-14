@@ -4,12 +4,10 @@ import {ContentProps} from './Content'
 
 export function List({
   tasks,
-  handleRadioState,
-  radio,
   handleDelete,
-  handleInvalidTask,
-  inputValue
-  }: ContentProps) {
+  completedTask,
+  })
+{
 
   return (
     <>
@@ -21,20 +19,18 @@ export function List({
           >
 
             <label
-              className={`${styles.label} ${radio.includes(item.id) ? styles.isStrikeThrough : ''}`}
+              className={`${styles.label} ${item.isComplete ? styles.isStrikeThrough : ''}`}
               htmlFor={item.content}
             >
               <input
-                id={item.content}
+                type="checkbox"
+                onClick={() => completedTask(item.id)}
+                readOnly={true}
                 name={item.content}
-                type="radio"
-                className={styles.input}
-                value={inputValue}
-                checked={radio === item.id}
-                onChange={() => handleRadioState(item.id)}
-                onInvalid={handleInvalidTask}
+                id={item.content}
+                checked={item.isComplete}
               />
-              {item.content}
+              {item.title}
             </label>
 
             <Trash

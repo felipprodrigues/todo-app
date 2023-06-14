@@ -3,19 +3,21 @@ import styles from '../styles/Form.module.css'
 import { ButtonHTMLAttributes, ChangeEvent, FormEvent } from "react";
 
 interface InputProps {
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleInputValue: (event: ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
   isInvalid: any;
+  inputValue: string
 }
 
-export function Form({handleChange, handleSubmit, isInvalid}: InputProps) {
+export function Form({handleInputValue, handleSubmit, isInvalid, inputValue}: InputProps) {
   return (
     <div className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Adicione uma nova tarefa"
-          onChange={handleChange}
+          onChange={handleInputValue}
+          value={inputValue}
         />
 
         <button
